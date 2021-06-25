@@ -6,97 +6,98 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="inventory")
+@Table(name="inventory2")
 public class Inventory {
 	
 	@Id
-	private int categoryId;
-	private String productName;
-	private String productDesc;
-	private String productSize;
-	private float productPrice;
-	private String productSku;
+	private int id;
+	private String name;
+	private String description;
+	private String size;
+	private float price;
+	private String sku;
 	
 	
-	public Inventory()
-	{
-		
+	
+	
+	public Inventory() {
+
 	}
 
 
-	public int getCategoryId() {
-		return categoryId;
+	public int getId() {
+		return id;
 	}
 
 
-	public void setCategoryId(int categoryId) {
-		this.categoryId = categoryId;
+	public String getName() {
+		return name;
 	}
 
 
-	public String getProductName() {
-		return productName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 
-	public void setProductName(String productName) {
-		this.productName = productName;
+	public String getDescription() {
+		return description;
 	}
 
 
-	public String getProductDesc() {
-		return productDesc;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 
-	public void setProductDesc(String productDesc) {
-		this.productDesc = productDesc;
+	public String getSize() {
+		return size;
 	}
 
 
-	public String getProductSize() {
-		return productSize;
+	public void setSize(String size) {
+		this.size = size;
 	}
 
 
-	public void setProductSize(String productSize) {
-		this.productSize = productSize;
+	public float getPrice() {
+		return price;
 	}
 
 
-	public float getProductPrice() {
-		return productPrice;
+	public void setPrice(float price) {
+		this.price = price;
 	}
 
 
-	public void setProductPrice(float productPrice) {
-		this.productPrice = productPrice;
+	public String getSku() {
+		return sku;
 	}
 
 
-	public String getProductSku() {
-		return productSku;
+	public void setSku(String sku) {
+		this.sku = sku;
 	}
 
 
-	public void setProductSku(String productSku) {
-		this.productSku = productSku;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 
-	public Inventory(int categoryId, String productName, String productDesc, String productSize, float productPrice,
-			String productSku) {
+	public Inventory(int id, String name, String description, String size, float price, String sku) {
 		super();
-		this.categoryId = categoryId;
-		this.productName = productName;
-		this.productDesc = productDesc;
-		this.productSize = productSize;
-		this.productPrice = productPrice;
-		this.productSku = productSku;
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.size = size;
+		this.price = price;
+		this.sku = sku;
 	}
 
 
 
-	
+//	git pull // 
+//	git checkout -b newbranch 
 	
 }

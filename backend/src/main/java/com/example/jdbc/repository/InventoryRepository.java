@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface InventoryRepository extends JpaRepository<Inventory, Integer>{
 
-//	List<Inventory> findByName(String name);
+	List<Inventory> findByName(String name);
 
 	
 }
