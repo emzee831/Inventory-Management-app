@@ -24,12 +24,6 @@ public class Inventory {
 
 	}
 
-
-	public int getId() {
-		return id;
-	}
-
-
 	public String getName() {
 		return name;
 	}
@@ -79,7 +73,10 @@ public class Inventory {
 		this.sku = sku;
 	}
 
-
+	public int getId() {
+		return id;
+	}
+	
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -97,7 +94,4 @@ public class Inventory {
 
 
 
-//	git pull // 
-//	git checkout -b newbranch 
-	
 }

@@ -1,5 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+/bootstrap-5.0.2
+/bootstrap-5.0.2-examples
+
 # dependencies
 /node_modules
 /.pnp
