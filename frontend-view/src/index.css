@@ -1,7 +1,21 @@
 .inventory-container{
     border: 1px solid grey;
+    width: 5000px;
 }
 
 .id-col{
     border: 3px solid whitesmoke;
+}
+
+.additemform {
+  
+
+}
+
+.id-col-form {
+    width: 10000px;
+    /* height: 50px; */
+    position: relative;
+    margin-left: 10px;
+    /* display: flexbox; */
 }

@@ -10,19 +10,19 @@ function Navbar() {
     const handleCick = () => setClick(!click);
     const closeMobileMenu = () => setClick(false)
 
-    const [button, setButton] = useState(true);
-    const showButton = () => {
-        if(window.innerWidth <= 960) {
-            setButton(false)
-        } else {
-            setButton(true)
-        }
-    };
+    // const [button, setButton] = useState(true);
+    // const showButton = () => {
+    //     if(window.innerWidth <= 960) {
+    //         setButton(false)
+    //     } else {
+    //         setButton(true)
+    //     }
+    // };
 
-    useEffect(() => {
-        showButton();
-    }, []);
-    window.addEventListener('resize', showButton);
+    // useEffect(() => {
+    //     showButton();
+    // }, []);
+    // window.addEventListener('resize', showButton);
 
     return (
         <>
@@ -30,8 +30,8 @@ function Navbar() {
             <nav className="navbar">
                 <div className="navbar-container">
                     <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
-                        Gully Vintage Outlet  
-                        <img src={logo} style={{
+                        Gully Vintage Outlet Management Tool
+                        <img src={logo} alt="" style={{
                             width: '61px', height: '61px'
                         }}/>
                     </Link>
@@ -55,8 +55,18 @@ function Navbar() {
                             </Link>
                         </li>
                         <li className='nav-item'>
-                            <Link to="/" className='nav-links-mobile' onClick={closeMobileMenu}>
+                            <Link to="/additem" className='nav-links' onClick={closeMobileMenu}>
                                 Add items
+                            </Link>
+                        </li>
+                        <li className='nav-item'>
+                            <Link to="/updateitem" className='nav-links' onClick={closeMobileMenu}>
+                                Update item
+                            </Link>
+                        </li>
+                        <li className='nav-item'>
+                            <Link to="/deleteitem" className='nav-links' onClick={closeMobileMenu}>
+                                Delete item
                             </Link>
                         </li>
                     </ul>

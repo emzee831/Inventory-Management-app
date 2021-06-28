@@ -2,11 +2,13 @@ import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react'
 import '../../index.css'
-// import axios from 'axios'
 import InventoryServices from '../../Services/inventoryService'
 
 
+
+
 const ListItems = () => {
+
 
     const [listData, setInventory] = useState([]);
 

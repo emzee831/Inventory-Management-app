@@ -4,6 +4,9 @@ import allitems from './Components/pages/listitems';
 import home from './Components/pages/home';
 import Nav from './Components/navbar/nav'
 import search from './Components/pages/search'
+import add from './Components/pages/additem'
+import update from './Components/pages/updateitem'
+import deleteItems from './Components/pages/delete';
 
 function App() {
   return (
@@ -14,6 +17,9 @@ function App() {
           <Route path = "/" exact component = {home}></Route>
           <Route path = "/inventory" component = {allitems}></Route>
           <Route path = "/search" component = {search}></Route>
+          <Route path = "/additem" component = {add}></Route>
+          <Route path = "/updateitem" component = {update}></Route>
+          <Route path = "/deleteitem" component = {deleteItems}></Route>
         </Switch>
       </Router>
       </div>
