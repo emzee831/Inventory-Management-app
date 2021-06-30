@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 function AddItems() {
     const URL = "http://localhost:8081/api/additem"
-    const URL2 = "http://localhost:8081/api/allinventory"
+    // const randomSku = Math.random().toString(36).substring(2);
     // button route const
     const [click, setClick] = useState(false);
     const handleCick = () => setClick(!click);
@@ -19,14 +19,27 @@ function AddItems() {
             price: '',
             sku: '',    
         })
-
+    // const [generatedSku, setSku] = useState({
+    //         sku: '',
+    // })
     
-        //e target id only works if id's in div area are the same as the state above
-        function handle(e) {
+        
+        // function handleSku (e) {
+        //     // e.preventDefault()
+        //     let newSku = {...data.sku}
+        //     newSku = Math.random().toString(36).substring(2);
+        //     console.log(newSku);
+        //     // newSku[e.target.id] = e.target.value
+        //     setData(newSku)
+        //     // console.log(randomSku);
+        // }
+
+         //e target id only works if id's in div area are the same as the state above
+         function handle(e) {
             const newdata = {...data}
             newdata[e.target.id] = e.target.value
             setData(newdata)
-            // console.log(newdata);
+            console.log(newdata);
         }
 
 
@@ -39,10 +52,9 @@ function AddItems() {
                 size: data.size,
                 price: parseInt(data.price),
                 sku: data.sku,  
-
             })
             .then(res => {
-                // console.log(res.data);
+                alert("succesfully added");
             })
         }
 
@@ -71,6 +83,7 @@ function AddItems() {
                         <input onChange={(e) => handle(e)} value={data.sku} type="text" id="sku" placeholder="sku" className="col child of .row-cols-md-6 id-col"/>
                         <button name="submit" class="btn btn-primary id-col" id="button" value="Submit Form">Add Item</button>
                     </form>
+                    {/* <button name="submit" onClick={handleSku} class="btn btn-primary id-col" id="button" value="Submit Form">generate sku</button> */}
             </div>
             <Link to="/inventory" className='nav-links'onClick={routeToAllList}>
             <button name="refresh" class="btn btn-primary id-col" id="button" value="refresh list">View Items</button>

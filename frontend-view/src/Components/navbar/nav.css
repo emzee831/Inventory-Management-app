@@ -1,9 +1,9 @@
 .navbar {
     background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);
-    height: 105px;
+    opacity: 0.9;
+    height: 115px;
     display: flex;
     justify-content: center;
-    /* align-items: center; */
     font-size: 1.2rem;
     position: absolute;
     top: 0;
@@ -21,12 +21,15 @@
   .navbar-logo {
     color: #fff;
     justify-self: first baseline;
+    left: 9px;
     margin-left: 5px;
     cursor: pointer;
     text-decoration: none;
     font-size: 2rem;
     display: flex;
   }
+  
+
   
   /* .fa-typo3 {
     margin-left: 0.5rem;

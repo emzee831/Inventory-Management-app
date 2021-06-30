@@ -2,12 +2,11 @@ import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import './nav.css'
 import logo from "../../images/kiglogo.jpg"
-// import { Button } from './Button'
 
 
 function Navbar() {
-    const [click, setClick] = useState(false);
-    const handleCick = () => setClick(!click);
+    const [click, setClick] = useState(false)
+    const handleCick = () => setClick(!click)
     const closeMobileMenu = () => setClick(false)
 
     // const [button, setButton] = useState(true);
@@ -27,12 +26,12 @@ function Navbar() {
     return (
         <>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <nav className="navbar">
+            <nav className="navbar"> 
                 <div className="navbar-container">
                     <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
                         Vintage Outlet Management Tool
                         <img src={logo} alt="" style={{
-                            width: '61px', height: '61px'
+                            width: '85px', height: '85px'
                         }}/>
                     </Link>
                     <div className='menu-icon' onClick={handleCick}>
@@ -59,23 +58,7 @@ function Navbar() {
                                 Add items
                             </Link>
                         </li>
-                        {/* <li className='nav-item'>
-                            <Link to="/updateitem" className='nav-links' onClick={closeMobileMenu}>
-                                Update item
-                            </Link>
-                        </li> */}
-                        {/* <li className='nav-item'>
-                            <Link to="/deleteitem" className='nav-links' onClick={closeMobileMenu}>
-                                Delete item
-                            </Link>
-                        </li>
-                        <li className='nav-item'>
-                            <Link to="/query" className='nav-links' onClick={closeMobileMenu}>
-                                search 2
-                            </Link>
-                        </li> */}
                     </ul>
-                    {/* {button && <Button buttonStyle='btn--outline'>SIGN UP</Button>} */}
                 </div>
             </nav>
         </nav>
