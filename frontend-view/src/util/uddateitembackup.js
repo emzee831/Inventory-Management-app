@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import '../../index.css'
 import axios from "axios";
 import { Link } from "react-router-dom";
+import ListItems from "./listitems";
 
-function AddItems() {
-    const URL = "http://localhost:8081/api/additem"
-    const URL2 = "http://localhost:8081/api/allinventory"
+function UpdateItem() {
+    const URL = "http://localhost:8081/api/inventory"
+    // const URL2 = "http://localhost:8081/api/allinventory"
     // button route const
     const [click, setClick] = useState(false);
     const handleCick = () => setClick(!click);
@@ -20,19 +21,27 @@ function AddItems() {
             sku: '',    
         })
 
-    
         //e target id only works if id's in div area are the same as the state above
         function handle(e) {
+            // console.log(e)   
+            if(e === "") {
+                alert("empty")
+            }else {
             const newdata = {...data}
             newdata[e.target.id] = e.target.value
             setData(newdata)
+            }
+            e.preventDefault()
             // console.log(newdata);
         }
 
 
         function submit(e) {
-            e.preventDefault()
-            axios.post(URL, {
+            // e.preventDefault()
+            if(e === "") {
+                console.log("test");
+            }else {
+            axios.put(URL+'id', {
                 id: parseInt(data.id),
                 name: data.name,
                 description: data.description,
@@ -42,8 +51,9 @@ function AddItems() {
 
             })
             .then(res => {
-                // console.log(res.data);
-            })
+                console.log(res.data)
+            })}
+           
         }
 
         return (
@@ -69,12 +79,13 @@ function AddItems() {
                         <p/>
                         <label for="itemsku" className="row id-col-form">Enter item sku:</label>
                         <input onChange={(e) => handle(e)} value={data.sku} type="text" id="sku" placeholder="sku" className="col child of .row-cols-md-6 id-col"/>
-                        <button name="submit" class="btn btn-primary id-col" id="button" value="Submit Form">Add Item</button>
+                        <button name="submit" class="btn btn-primary id-col" id="button" value="Submit Form">Update Item</button>
                     </form>
             </div>
             <Link to="/inventory" className='nav-links'onClick={routeToAllList}>
-            <button name="refresh" class="btn btn-primary id-col" id="button" value="refresh list">View Items</button>
+            <button name="refresh" class="btn btn-primary id-col" id="button" value="refresh list">View updated Items</button>
             </Link>
+            <ListItems/>
 
         </div>
         )
@@ -82,4 +93,4 @@ function AddItems() {
 }
 
 
-export default AddItems
+export default UpdateItem

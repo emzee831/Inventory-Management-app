@@ -30,7 +30,7 @@ function Navbar() {
             <nav className="navbar">
                 <div className="navbar-container">
                     <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
-                        Gully Vintage Outlet Management Tool
+                        Vintage Outlet Management Tool
                         <img src={logo} alt="" style={{
                             width: '61px', height: '61px'
                         }}/>
@@ -59,16 +59,21 @@ function Navbar() {
                                 Add items
                             </Link>
                         </li>
-                        <li className='nav-item'>
+                        {/* <li className='nav-item'>
                             <Link to="/updateitem" className='nav-links' onClick={closeMobileMenu}>
                                 Update item
                             </Link>
-                        </li>
-                        <li className='nav-item'>
+                        </li> */}
+                        {/* <li className='nav-item'>
                             <Link to="/deleteitem" className='nav-links' onClick={closeMobileMenu}>
                                 Delete item
                             </Link>
                         </li>
+                        <li className='nav-item'>
+                            <Link to="/query" className='nav-links' onClick={closeMobileMenu}>
+                                search 2
+                            </Link>
+                        </li> */}
                     </ul>
                     {/* {button && <Button buttonStyle='btn--outline'>SIGN UP</Button>} */}
                 </div>

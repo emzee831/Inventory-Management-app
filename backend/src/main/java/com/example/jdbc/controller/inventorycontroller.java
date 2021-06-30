@@ -48,11 +48,11 @@ public class inventorycontroller {
 		return invRepo.findByName(name);
 	}
 	// delete item
-	@DeleteMapping("/allinventory/{id}")
+	@DeleteMapping("/delete/{id}")
 	public String deleteItem(@PathVariable("id")int id)
 	{
 		invRepo.findById(id).orElseThrow(()-> new Resourcenotfoundexception("item not found"));
-		invRepo.deleteById((int)id);
+		invRepo.deleteById(id);
 		return "" + id;
 	}
 	// add item
@@ -63,7 +63,7 @@ public class inventorycontroller {
 		return invRepo.save(s);
 	}
 	// update item
-	@PutMapping("/inventory/{id}")
+	@PutMapping("/updateitem/{id}")
 	public ResponseEntity<Inventory> updateItem(@PathVariable int id, @RequestBody Inventory In)
 	{
 		Inventory i=invRepo.findById(id).orElseThrow(() -> new Resourcenotfoundexception("item not found"));

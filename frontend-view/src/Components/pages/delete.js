@@ -1,49 +1,48 @@
-import React, { useState, useEffect } from "react";
 import '../../index.css'
 import axios from "axios";
 import { Link } from "react-router-dom";
 import ListItems from "./listitems";
+import InventoryServices from '../../Services/inventoryService'
+import { Component } from 'react';
+import history from 'react-router'
 
-function DeleteItems() {
-    const URL = "http://localhost:8081/api/allinventory"
+class DeleteItems extends Component {
+    constructor(props)
+    {
+        super(props)
 
-    // button route const
-    const [click, setClick] = useState(false);
-    const handleCick = () => setClick(!click);
-    const routeToAllList = () => setClick(false)
+                this.state={
+                    id: this.id
+                }
 
-    const [data, setData] = useState({
-            id: ''   
-        })
+                this.idHandler = this.idHandler.bind(this)
+                this.deleteitem = this.deleteitem.bind(this)
+                // this.viewlist = this.viewlist.bind(this)
+            }
+
+        idHandler(event) {
+            this.setState({
+                [event.target.id]: event.target.value
+            })
+        }
 
     
-        //e target id only works if id's in div area are the same as the state above
-        function handle(e) {
-            const newdata = {...data}
-            newdata[e.target.id] = e.target.value
-            setData(newdata)
-            console.log(newdata);
-        }
-
-
-        function submit(e) {
-            e.preventDefault()
-            axios.delete(URL, {
-                id: parseInt(data.id)
-            })
-            .then(res => {
-                console.log(res.data)
-            })
-        }
-
+        deleteitem()
+        {
+            let itemId = this.state.id
+            InventoryServices.deleteItem(`${itemId}`)
+            }
+            
+    
+        render(){
         return (
             <div className="container inventory-container">
-                {/* form section */}
+                {/* form section */} 
                 <div >
-                    <form onSubmit={(e) => submit(e)} name='itemaddform' id="itemaddform" className="id-col-for1">
+                    <form onSubmit={this.deleteitem} value="" name='itemdeleteform' id="itemdeleteform" className="id-col-for1">
                         <p/>
                         <label for="itemid" className="row id-col-form">Enter item id:</label>
-                        <input onChange={(e) => handle(e)} type="text" id="id" placeholder="Item" value={data.id} className="col child of .row-cols-md-6 id-col"/>
+                        <input onChange={this.idHandler} name="id" value={this.state.id} type="text" id="id" placeholder="Item" className="col child of .row-cols-md-6 id-col"/>
                         <p/>
                         {/* <label for="itemname" className="row id-col-form">Enter item name</label>
                         <input onChange={(e) => handle(e)} value={data.name} type="text" id="name" placeholder="name" className="col child of .row-cols-md-6 id-col"/>
@@ -59,18 +58,19 @@ function DeleteItems() {
                         <p/>
                         <label for="itemsku" className="row id-col-form">Enter item sku:</label>
                         <input onChange={(e) => handle(e)} value={data.sku} type="text" id="sku" placeholder="sku" className="col child of .row-cols-md-6 id-col"/> */}
-                        <button name="submit" class="btn btn-primary id-col" id="button" value="Submit Form">Delete Item</button>
+                        <button name="submit" class="btn btn-primary id-col" onClick={this.deleteitem} >Delete Item</button>
                     </form>
             </div>
-            <Link to="/inventory" className='nav-links'onClick={routeToAllList}>
+            {/* <Link to="/inventory" className='nav-links'onClick={routeToAllList}>
             <button name="refresh" class="btn btn-primary id-col" id="button" value="refresh list">View Items</button>
-            </Link>
-            <ListItems/>
+            </Link> */}
+            <ListItems deleteItem2={this.deleteitem}/>
 
-        </div>
-        )
+            </div>
+            )
         
+    }
 }
 
 
-export default DeleteItems
+export default DeleteItems 

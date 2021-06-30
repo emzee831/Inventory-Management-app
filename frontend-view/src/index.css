@@ -1,15 +1,11 @@
 .inventory-container{
     border: 1px solid grey;
     width: 5000px;
+    padding: 10px;
 }
 
 .id-col{
     border: 3px solid whitesmoke;
-}
-
-.additemform {
-  
-
 }
 
 .id-col-form {

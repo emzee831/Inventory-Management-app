@@ -2,7 +2,7 @@
 
 /bootstrap-5.0.2
 /bootstrap-5.0.2-examples
-
+/config
 # dependencies
 /node_modules
 /.pnp
@@ -10,7 +10,7 @@
 
 # testing
 /coverage
-
+src/util/config
 # production
 /build
 

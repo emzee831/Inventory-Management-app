@@ -1,96 +1,74 @@
-import React, { useState, useEffect } from "react";
+import { Component } from 'react'
 import '../../index.css'
-import axios from "axios";
-import { Link } from "react-router-dom";
-import ListItems from "./listitems";
+import InventoryServices from '../../Services/inventoryService'
 
-function UpdateItem() {
-    const URL = "http://localhost:8081/api/inventory"
-    const URL2 = "http://localhost:8081/api/allinventory"
-    // button route const
-    const [click, setClick] = useState(false);
-    const handleCick = () => setClick(!click);
-    const routeToAllList = () => setClick(false)
 
-    const [data, setData] = useState({
-            id: '',
+
+class UpdateItem extends Component {
+    constructor(props)
+    {
+        super(props)
+        this.state={
+            id: this.props.match.params.id,
             name: '',
             description: '',
             size: '',
             price: '',
-            sku: '',    
+            sku: '',
+        }
+        console.log(this.props.match.params.id);
+        this.idHandler = this.idHandler.bind(this)
+        this.updateItem = this.updateItem.bind(this)
+    }
+
+    updateItem(event){
+        let items = {
+            name: this.state.name,
+            description: this.state.description,
+            size: this.state.size,
+            price: this.state.price,
+            sku: this.state.sku,
+        }
+        console.log(items);
+        console.log(this.state.id);
+        InventoryServices.getUpdateItem(items, this.state.id).then((resback) =>  {
+            alert("updated")
         })
+        // event.preventDefault()
+    }
 
-        //e target id only works if id's in div area are the same as the state above
-        function handle(e) {
-            // console.log(e)
-            if(e === "") {
-                alert("empty")
-            }else {
-            const newdata = {...data}
-            newdata[e.target.id] = e.target.value
-            setData(newdata)
-            }
-            e.preventDefault()
-            // console.log(newdata);
-        }
+    idHandler(event) {
+        this.setState({
+            [event.target.name]: event.target.value,
+        })
+    }
+
+  
+    render() {
+        
+    return (
+        <div className="container inventory-container">
+            <form className="id-col-for1">
+                    <label className="row id-col-form">Enter id:</label>
+                    <input placeholder="id" type="text" name="id" className="col id-col" value={this.state.id} onChange={this.idHandler}></input>
+                    <label className="row id-col-form">Enter name:</label>
+                    <input placeholder="name" type="text" name="name" className="col id-col" value={this.state.name} onChange={this.idHandler}></input>
+                    <label className="row id-col-form">Enter description:</label>
+                    <input placeholder="description" type="text" name="description" className="col id-col" value={this.state.description} onChange={this.idHandler}></input>
+                    <label className="row id-col-form">Enter size:</label>
+                    <input placeholder="size" type="text" name="size" className="col id-col" value={this.state.size} onChange={this.idHandler}></input>
+                    <label className="row id-col-form">Enter price:</label>
+                    <input placeholder="price" type="currency" name="price" className="col id-col" value={this.state.price} onChange={this.idHandler}></input>
+                    <label className="row id-col-form">Enter sku:</label>
+                    <input placeholder="sku" type="text" name="sku" className="col id-col" value={this.state.sku} onChange={this.idHandler}></input>
 
 
-        function submit(e) {
-            // e.preventDefault()
-            if(e === "") {
-                console.log("test");
-            }else {
-            axios.put(URL, {
-                id: parseInt(data.id),
-                name: data.name,
-                description: data.description,
-                size: data.size,
-                price: parseInt(data.size),
-                sku: data.sku,  
-
-            })
-            .then(res => {
-                console.log(res.data)
-            })}
-           
-        }
-
-        return (
-            <div className="container inventory-container">
-                {/* form section */}
-                <div >
-                    <form onSubmit={(e) => submit(e)} name='itemaddform' id="itemaddform" className="id-col-for1">
-                        <p/>
-                        <label for="itemid" className="row id-col-form">Enter item id:</label>
-                        <input onChange={(e) => handle(e)} type="text" id="id" placeholder="Item" value={data.id} className="col child of .row-cols-md-6 id-col"/>
-                        <p/>
-                        <label for="itemname" className="row id-col-form">Enter item name</label>
-                        <input onChange={(e) => handle(e)} value={data.name} type="text" id="name" placeholder="name" className="col child of .row-cols-md-6 id-col"/>
-                        <p/>
-                        <label for="itemtype" className="row id-col-form">Enter item type:</label>
-                        <input onChange={(e) => handle(e)} value={data.description} type="text" id="description" placeholder="type" className="col child of .row-cols-md-6 id-col"/>
-                        <p/>
-                        <label for="itemsize" className="row id-col-form">Enter item size:</label>
-                        <input onChange={(e) => handle(e)} value={data.size} type="text" id="size" placeholder="size" className="col child of .row-cols-md-6 id-col"/>
-                        <p/>
-                        <label for="itemprice" className="row id-col-form">Enter item price:</label>
-                        <input onChange={(e) => handle(e)} value={data.price} type="text" id="price" placeholder="price" className="col child of .row-cols-md-6 id-col"/>
-                        <p/>
-                        <label for="itemsku" className="row id-col-form">Enter item sku:</label>
-                        <input onChange={(e) => handle(e)} value={data.sku} type="text" id="sku" placeholder="sku" className="col child of .row-cols-md-6 id-col"/>
-                        <button name="submit" class="btn btn-primary id-col" id="button" value="Submit Form">Update Item</button>
-                    </form>
-            </div>
-            <Link to="/inventory" className='nav-links'onClick={routeToAllList}>
-            <button name="refresh" class="btn btn-primary id-col" id="button" value="refresh list">View updated Items</button>
-            </Link>
-            <ListItems/>
-
+                <button name="submit" onClick={this.updateItem} class="btn btn-primary id-col" id="button" value="Submit Form">Update Item</button>
+            </form>  
         </div>
         )
-        
+    }
+    
+
 }
-
-
 export default UpdateItem
