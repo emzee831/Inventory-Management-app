@@ -7,7 +7,7 @@ import search from './Components/pages/search'
 import add from './Components/pages/additem'
 import update from './Components/pages/updateitem'
 import deleteItems from './Components/pages/delete';
-import query from './util/query'
+
 
 function App() {
   return (
@@ -21,7 +21,6 @@ function App() {
           <Route path = "/additem" component = {add}></Route>
           <Route path = "/updateitem" component = {update}></Route>
           <Route path = "/deleteitem/" component = {deleteItems}></Route>
-          <Route path = "/query" component = {query}></Route>
         </Switch>
       </Router>
       </div>

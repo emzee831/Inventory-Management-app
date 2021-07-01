@@ -26,7 +26,6 @@ class ListItems extends Component {
         InventoryServices.getInventory().then((res) =>{
             this.setState({items:res.data})
             this.setState({id:res.data.id})
-            // console.log(Object.values(res.data))
         })
 
     }

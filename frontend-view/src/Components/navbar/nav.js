@@ -9,19 +9,6 @@ function Navbar() {
     const handleCick = () => setClick(!click)
     const closeMobileMenu = () => setClick(false)
 
-    // const [button, setButton] = useState(true);
-    // const showButton = () => {
-    //     if(window.innerWidth <= 960) {
-    //         setButton(false)
-    //     } else {
-    //         setButton(true)
-    //     }
-    // };
-
-    // useEffect(() => {
-    //     showButton();
-    // }, []);
-    // window.addEventListener('resize', showButton);
 
     return (
         <>

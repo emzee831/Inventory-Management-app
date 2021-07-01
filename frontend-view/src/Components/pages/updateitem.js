@@ -34,7 +34,6 @@ class UpdateItem extends Component {
         InventoryServices.getUpdateItem(items, this.state.id).then((resback) =>  {
             alert("updated")
         })
-        // event.preventDefault()
     }
 
     idHandler(event) {

@@ -48,31 +48,7 @@ class SearchItems extends Component {
             // Rest operators ensure a new object with merged properties and values.
             this.setState({ ...this.initialState, ...stateUpdates });
           }
-    //     findByname(event){
-    //         event.preventDefault()
-    //         InventoryServices.getsearchByName(this.state.name).then((res) => {
-    //         console.log(res.data);
-    //         this.setState({id:res.data.id});
-    //         this.setState({name:res.data.name});
-    //         this.setState({description:res.data.description});
-    //         this.setState({size:res.data.size});
-    //         this.setState({price:res.data.price});
-    //         this.setState({sku:res.data.sku});
-            
-    //     });
-    //    }
 
-
-    //     idHandler(event){
-    //     this.setState({
-    //         [event.target.name]: event.target.value,
-    //     })
-    //    }
-    //     nameHandler(event){
-    //     this.setState({
-    //         [event.target.name]: event.target.value,
-    //     })
-    //     }
 
         handleChange = event => {
             this.setState({
@@ -91,11 +67,6 @@ class SearchItems extends Component {
                 <input className="col" type="text" name="id" value={this.state.id} onChange={this.handleChange}></input>
                 <br></br>
                 <button type="button" onClick={this.findById} class="btn btn-primary">Search</button>
-                
-                {/* <label className="col id-col-form">Enter item name:</label>
-                <input className="col" type="text" name="name" value={this.state.name} onChange={this.handleChange}></input>
-                <br></br>
-                <button type="button" onClick={this.findByname} class="btn btn-primary">Search</button> */}
             </form>
 
             <div> 
